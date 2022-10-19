@@ -1,0 +1,10 @@
+# ninja log v5
+4	26	0	D:/Projects/GateKeeperV2/QT/build-GateKeeperV2-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	4f3d4248c5f222ec
+1	736	6879264086303587	GateKeeperV2_autogen/timestamp	bb4a35e13d34292c
+1	736	6879264086303587	GateKeeperV2_autogen/mocs_compilation.cpp	bb4a35e13d34292c
+1	736	6879264086303587	D:/Projects/GateKeeperV2/QT/build-GateKeeperV2-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/GateKeeperV2_autogen/timestamp	bb4a35e13d34292c
+1	736	6879264086303587	D:/Projects/GateKeeperV2/QT/build-GateKeeperV2-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/GateKeeperV2_autogen/mocs_compilation.cpp	bb4a35e13d34292c
+736	2319	6879264103637022	CMakeFiles/GateKeeperV2.dir/GateKeeperV2_autogen/mocs_compilation.cpp.obj	7fb2f9651200257b
+738	2367	6879264104053727	CMakeFiles/GateKeeperV2.dir/mainwindow.cpp.obj	395e8a60860ebddc
+741	2389	6879264104329367	CMakeFiles/GateKeeperV2.dir/main.cpp.obj	2be7fbaf45527c34
+2389	2559	6879264106001021	GateKeeperV2.exe	7427c772fc5ff31c
