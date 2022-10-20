@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>resource/image/whiting.logo.small.horizontal.white.png</file>
+        <file>resource/image/university.shield.small.white.png</file>
+    </qresource>
+</RCC>
