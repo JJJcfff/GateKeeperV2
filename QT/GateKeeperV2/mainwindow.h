@@ -15,7 +15,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void start_clock();
+
 private:
     Ui::MainWindow *ui;
 };
+#define mainwindow ((MainWindow*)parent_handle)
 #endif // MAINWINDOW_H
