@@ -17,6 +17,7 @@ public:
 
 private slots:
     void start_clock();
+    int get_override_pwd();
 
 private:
     Ui::MainWindow *ui;

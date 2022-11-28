@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QTimer>
 #include <QTime>
+#include <QDateTime>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +18,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::start_clock(){
+void MainWindow::start_clock()
+{
     ui->setupUi(this);
     QTimer *t = new QTimer(this);
     t->setInterval(1000);
@@ -28,3 +30,7 @@ void MainWindow::start_clock(){
     t->start();
 }
 
+int MainWindow::get_override_pwd()
+{
+    qint64 ms_epoch = QDateTime::currentMSecsSinceEpoch();
+}
