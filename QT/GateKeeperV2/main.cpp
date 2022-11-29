@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "BaseConverter.h"
 #include <fstream>
 #include <QDateTime>
 #include <QApplication>

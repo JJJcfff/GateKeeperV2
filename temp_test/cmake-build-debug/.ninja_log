@@ -1,0 +1,9 @@
+# ninja log v5
+3	297	6913713855500377	CMakeFiles/temp_test.dir/main.cpp.obj	9ae65e89a794cec7
+298	369	6913713856125233	temp_test.exe	c66b6162f71c48f6
+3	319	6913715647989301	CMakeFiles/temp_test.dir/main.cpp.obj	9ae65e89a794cec7
+319	399	6913715648770371	temp_test.exe	c66b6162f71c48f6
+2	302	6913718223903947	CMakeFiles/temp_test.dir/main.cpp.obj	9ae65e89a794cec7
+302	379	6913718224528788	temp_test.exe	c66b6162f71c48f6
+2	321	6913719267413868	CMakeFiles/temp_test.dir/main.cpp.obj	9ae65e89a794cec7
+321	394	6913719268126152	temp_test.exe	c66b6162f71c48f6

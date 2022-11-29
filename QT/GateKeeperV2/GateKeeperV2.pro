@@ -11,9 +11,11 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp
+    BaseConverter.cpp
 
 HEADERS += \
     mainwindow.h
+    BaseConverter.h
 
 FORMS += \
     mainwindow.ui
