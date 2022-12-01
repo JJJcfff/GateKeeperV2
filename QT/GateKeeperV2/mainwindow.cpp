@@ -30,12 +30,13 @@ void MainWindow::start_clock()
     QTimer *t = new QTimer(this);
     t->setInterval(1000);
     connect(t, &QTimer::timeout, [&]() {
-       QString time1 = QTime::currentTime().toString();
-       ui->clock->setText(time1);
+        QString time1 = QTime::currentTime().toString();
+        ui->clock->setText(time1);
     });
     t->start();
     get_override_pwd();
 }
+
 
 int MainWindow::get_override_pwd()
 {
@@ -44,14 +45,13 @@ int MainWindow::get_override_pwd()
     std::time_t x = std::mktime(&a);
     std::time_t y = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     double difference = std::difftime(y, x) / (60 * 60 * 24 * 7);
-    QString weeks = QString::fromStdString(std::to_string(std::round(difference)));
-    QString salt = "09E1CDA686F8A1B1";
-    QByteArray data = (weeks+salt).toUtf8();
-    QByteArray hash = QCryptographicHash::hash(data, QCryptographicHash::Sha256);
+    QString weeks = QString::fromStdString(std::to_string(int(std::round(difference))));
+    QString salt = "09e1cda686f8a1b1";
+    QByteArray hash = QCryptographicHash::hash((weeks+salt).toUtf8(), QCryptographicHash::Sha256);
     std::string hex_string = (hash.toHex(0)).toStdString();
-    auto num = hex2dec.Convert(hex_string.substr(hex_string.size()-16,hex_string.size()));
-    num = num.substr(num.size()-6,num.size());
-    int override_pwd = std::stoi(num);
-    qDebug() << override_pwd;
+    for (auto & c: hex_string) c = toupper(c);
+    std::string decimal_string = hex2dec.Convert(hex_string.substr(hex_string.size()-16,hex_string.size()));
+    decimal_string = decimal_string.substr(decimal_string.size()-6,decimal_string.size());
+    int override_pwd = std::stoi(decimal_string);
     return override_pwd;
 }

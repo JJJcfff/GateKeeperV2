@@ -9,13 +9,13 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    BaseConverter.cpp\
     main.cpp \
     mainwindow.cpp
-    BaseConverter.cpp
 
 HEADERS += \
+    BaseConverter.h\
     mainwindow.h
-    BaseConverter.h
 
 FORMS += \
     mainwindow.ui
