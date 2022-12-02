@@ -17,8 +17,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     start_clock();
-
-
+    start_swipe_animation();
+    hideOverrideInput();
+    ui->EmergencyOverridInput->setEchoMode(QLineEdit::Password);
+    ui->EmergencyOverridInput->setClearButtonEnabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +39,10 @@ void MainWindow::start_clock()
         ui->clock->setAlignment(Qt::AlignCenter);
     });
     t->start();
+}
 
+void MainWindow::start_swipe_animation()
+{
     QMovie* swipe = new QMovie(":/image/resource/image/cardswipe.gif");
     if (swipe->isValid())
     {
@@ -48,14 +53,14 @@ void MainWindow::start_clock()
 }
 
 
-int MainWindow::get_override_pwd()
+QString MainWindow::get_override_pwd()
 {
     struct std::tm a = {0,0,0,5,0,70}; // Monday, January 5th 1970 at 00:00:00
     const BaseConverter& hex2dec = BaseConverter::HexToDecimalConverter();
     std::time_t x = std::mktime(&a);
     std::time_t y = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     double difference = std::difftime(y, x) / (60 * 60 * 24 * 7);
-    QString weeks = QString::fromStdString(std::to_string(int(std::round(difference))));
+    QString weeks = QString::fromStdString(std::to_string(int(std::floor(difference))));
     QString salt = "09e1cda686f8a1b1";
     QByteArray hash = QCryptographicHash::hash((weeks+salt).toUtf8(), QCryptographicHash::Sha256);
     std::string hex_string = (hash.toHex(0)).toStdString();
@@ -63,7 +68,7 @@ int MainWindow::get_override_pwd()
     std::string decimal_string = hex2dec.Convert(hex_string.substr(hex_string.size()-16,hex_string.size()));
     decimal_string = decimal_string.substr(decimal_string.size()-6,decimal_string.size());
     int override_pwd = std::stoi(decimal_string);
-    return override_pwd;
+    return QString::number(override_pwd);
 }
 
 void MainWindow::hide_jcard_buttons()
@@ -85,11 +90,35 @@ void MainWindow::show_jcard_buttons()
 void MainWindow::on_EmergenryOveride_button_clicked()
 {
     hide_jcard_buttons();
+    showOverrideInput();
+    overridepassword = get_override_pwd();
 }
 
+void MainWindow::showOverrideInput()
+{
+    ui->overrideInput->show();
+}
+
+void MainWindow::hideOverrideInput()
+{
+    ui->overrideInput->hide();
+}
 
 void MainWindow::on_modify_budget_button_clicked()
 {
 
+}
+
+
+void MainWindow::on_EmergencyOverridInput_returnPressed()
+{
+    qDebug() << overridepassword << ui->EmergencyOverridInput->text();
+
+    if (ui->EmergencyOverridInput->text()==overridepassword)
+    {
+        hideOverrideInput();
+        show_jcard_buttons();
+    }
+    ui->EmergencyOverridInput->clear();
 }
 

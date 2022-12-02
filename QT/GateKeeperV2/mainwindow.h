@@ -17,7 +17,8 @@ public:
 
 private slots:
     void start_clock();
-    int get_override_pwd();
+
+    void start_swipe_animation();
 
     void on_EmergenryOveride_button_clicked();
 
@@ -27,8 +28,17 @@ private slots:
 
     void show_jcard_buttons();
 
+    void showOverrideInput();
+
+    void hideOverrideInput();
+
+    QString get_override_pwd();
+
+    void on_EmergencyOverridInput_returnPressed();
+
 private:
     Ui::MainWindow *ui;
+    QString overridepassword;
 };
 #define mainwindow ((MainWindow*)parent_handle)
 #endif // MAINWINDOW_H
