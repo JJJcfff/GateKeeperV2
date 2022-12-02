@@ -19,6 +19,14 @@ private slots:
     void start_clock();
     int get_override_pwd();
 
+    void on_EmergenryOveride_button_clicked();
+
+    void on_modify_budget_button_clicked();
+
+    void hide_jcard_buttons();
+
+    void show_jcard_buttons();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -9,6 +9,8 @@
 #include <chrono>
 #include <cmath>
 #include <QCryptographicHash>
+#include <QMovie>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,9 +34,17 @@ void MainWindow::start_clock()
     connect(t, &QTimer::timeout, [&]() {
         QString time1 = QTime::currentTime().toString();
         ui->clock->setText(time1);
+        ui->clock->setAlignment(Qt::AlignCenter);
     });
     t->start();
-    get_override_pwd();
+
+    QMovie* swipe = new QMovie(":/image/resource/image/cardswipe.gif");
+    if (swipe->isValid())
+    {
+        ui->cardswipeanimation->setScaledContents(true);
+        ui->cardswipeanimation->setMovie(swipe);
+        swipe->start();
+    }
 }
 
 
@@ -55,3 +65,31 @@ int MainWindow::get_override_pwd()
     int override_pwd = std::stoi(decimal_string);
     return override_pwd;
 }
+
+void MainWindow::hide_jcard_buttons()
+{
+    ui->JcardEnter_textBox->hide();
+    ui->enterJcardHint_Label->hide();
+    ui->cardswipeanimation->hide();
+    ui->swipeJcard_button->hide();
+}
+
+void MainWindow::show_jcard_buttons()
+{
+    ui->JcardEnter_textBox->show();
+    ui->enterJcardHint_Label->show();
+    ui->cardswipeanimation->show();
+    ui->swipeJcard_button->show();
+}
+
+void MainWindow::on_EmergenryOveride_button_clicked()
+{
+    hide_jcard_buttons();
+}
+
+
+void MainWindow::on_modify_budget_button_clicked()
+{
+
+}
+
